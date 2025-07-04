@@ -1,0 +1,47 @@
+version: '3.8'
+
+# Serviço da Aplicação (Laravel + Apache)
+services:
+  lm_frotas:
+    build:
+      context: .      
+      dockerfile: Dockerfile
+    user: "${UID}:${GID}"
+    container_name: lm_frotas
+    ports:
+      - "8000:80"
+    volumes:      
+      # Monta a subpasta 'laravel' para dentro do contêiner
+      - ./laravel:/var/www/html      
+      - ./docker/apache/000-default.conf:/etc/apache2/sites-available/000-default.conf
+    networks:
+      - frotas-net
+    depends_on:
+      - db
+
+  # Serviço de Banco de Dados (MySQL)
+  db:
+    image: mysql:8.0
+    container_name: frotas-db
+    restart: unless-stopped
+    environment:
+      MYSQL_DATABASE: ${DB_DATABASE:-frotas_db}
+      MYSQL_ROOT_PASSWORD: ${DB_PASSWORD:-secret}
+      MYSQL_PASSWORD: ${DB_PASSWORD:-secret}
+      MYSQL_USER: ${DB_USERNAME:-frotas_user}
+    volumes:
+      - frotas-db-data:/var/lib/mysql
+    networks:
+      - frotas-net
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      timeout: 20s
+      retries: 10
+
+networks:
+  frotas-net:
+    driver: bridge
+
+volumes:
+  frotas-db-data:
+    driver: local
