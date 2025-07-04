@@ -29,8 +29,7 @@ Para rodar este projeto na sua máquina, siga estes passos simples.
 Abra seu terminal e clone o projeto para a sua máquina.
 
 ```bash
-git clone [https://github.com/kaelmontalvao/teste_lmfrotas](https://github.com/kaelmontalvao/teste_lmfrotas)
-cd teste_lmfrotas
+git clone git@github.com:kaelmontalvao/teste_lmfrotas.git && cd teste_lmfrotas
 ```
 
 #### 2. Configurar o Ambiente (`.env`)
@@ -63,13 +62,13 @@ docker compose up -d --build
 #### 4. Comandos de Finalização
 Com os contêineres rodando, precisamos executar alguns comandos do Laravel para deixar tudo pronto.
 
-* **Gerar a chave da aplicação (essencial para segurança):**
-    ```bash
-    docker compose exec lm_frotas php artisan key:generate
-    ```
 * **Instalação do composer dentro do container:**
     ```bash
     docker compose exec lm_frotas composer install
+    ```
+* **Gerar a chave da aplicação (essencial para segurança):**
+    ```bash
+    docker compose exec lm_frotas php artisan key:generate
     ```
 * **Execução da migrations para criar as tabelas:**
     ```bash

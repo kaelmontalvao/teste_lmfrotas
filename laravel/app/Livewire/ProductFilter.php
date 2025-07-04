@@ -6,10 +6,8 @@ use App\Models\Brand;
 use App\Models\Category;
 use App\Models\Product;
 use Livewire\Component;
-use Livewire\Attributes\Layout;
 use Livewire\WithPagination;
 use Livewire\Attributes\Url;
-use Livewire\Attributes\Computed;
 
 class ProductFilter extends Component
 {
