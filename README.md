@@ -98,16 +98,7 @@ Você deverá ver a página de filtros de produtos funcionando.
 
 ### ✅ Testes Automatizados
 
-Para garantir que a nossa funcionalidade de filtros continue funcionando corretamente após qualquer alteração, o projeto conta com uma suíte de testes automatizados.
-
-#### A Mágica do `RefreshDatabase`
-
-Usamos uma ferramenta do Laravel chamada `RefreshDatabase` nos nossos testes. Ela é sua **melhor amiga nos testes**, pois garante que cada teste rode em um ambiente limpo e isolado.
-
-* **Como funciona?** Antes de cada teste, ela cria uma "bolha" segura (uma transação no banco de dados).
-* O teste cria produtos, categorias, etc., tudo dentro dessa bolha.
-* Ao final do teste, a bolha estoura (um `ROLLBACK` é executado) e o banco de dados volta a ser exatamente como era antes: limpo e vazio.
-* Isso garante que um teste nunca interfira no resultado de outro!
+Para garantir que a funcionalidade de filtros continue funcionando corretamente após qualquer alteração, o projeto conta com a implementação de testes automatizados.
 
 #### O que os testes verificam?
 
