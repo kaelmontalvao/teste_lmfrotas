@@ -1,6 +1,6 @@
 # Projeto Filtro de Produtos com Livewire e Docker
 
-Olá! 👋 Bem-vindo a este projeto de demonstração.
+Olá! 👋 Bem-vindo a este projeto de demonstração de utilização de filtros.
 
 O objetivo aqui é mostrar um sistema de filtragem de produtos dinâmico e interativo, construído com o poder do **Laravel** e do **Livewire**. Todo o ambiente de desenvolvimento está containerizado com **Docker**, facilitando a configuração e a execução em qualquer máquina.
 
@@ -12,7 +12,7 @@ O objetivo aqui é mostrar um sistema de filtragem de produtos dinâmico e inter
 * **Front-end Interativo:** Livewire 3
 * **Ambiente de Desenvolvimento:** Docker & Docker Compose (com Apache e MySQL)
 * **Testes:** Pest (um framework de testes para PHP com foco em simplicidade)
-* **Estilo (opcional):** Tailwind CSS
+* **Estilo (opcional):** Picocss
 
 ---
 
@@ -42,7 +42,7 @@ O projeto precisa de um arquivo de configuração de ambiente. Nós já deixamos
     ```
 
 * **Configuração do Banco de Dados:**
-    As configurações no arquivo `.env` já estão corretas para se conectar com o banco de dados do Docker. Você não precisa mudar nada, mas é bom saber como funciona:
+    Substitua a configuração de conexão do banco de dados no arquivo `.env` por essas que já estão corretas para se conectar com o banco de dados do Docker:
     ```env
     DB_CONNECTION=mysql
     DB_HOST=db             # 'db' é o nome do serviço do banco de dados no docker-compose.yml
@@ -67,13 +67,21 @@ Com os contêineres rodando, precisamos executar alguns comandos do Laravel para
     ```bash
     docker compose exec lm_frotas php artisan key:generate
     ```
-* **(Opcional) Otimizar a chave de configuração:**
+* **Instalação do composer dentro do container:**
     ```bash
-    docker compose exec lm_frotas php artisan config:optimize
+    docker compose exec lm_frotas composer install
+    ```
+* **Execução da migrations para criar as tabelas:**
+    ```bash
+    docker compose exec lm_frotas php artisan migrate
     ```
 * **Popular o banco de dados com dados de exemplo:**
     ```bash
     docker compose exec lm_frotas php artisan db:seed
+    ```
+* **(Opcional) Otimizar arquivos de cache:**
+    ```bash
+    docker compose exec lm_frotas php artisan optimize
     ```
 
 #### 5. Acesse o Projeto!

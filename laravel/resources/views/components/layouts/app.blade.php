@@ -9,8 +9,7 @@
 
     {{-- 
         Estou adicionando o Pico.css aqui para um estilo visual limpo e moderno.
-        Ele estiliza os elementos HTML padrão sem a necessidade de classes.
-        Você pode remover ou trocar por outro framework como Bootstrap ou Tailwind.
+        Ele estiliza os elementos HTML padrão sem a necessidade de classes.        
     --}}
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css"/>
 

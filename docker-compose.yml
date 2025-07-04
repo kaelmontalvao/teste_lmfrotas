@@ -4,7 +4,6 @@ services:
     build:
       context: .      
       dockerfile: Dockerfile
-    user: "${UID}:${GID}"
     container_name: lm_frotas
     ports:
       - "8000:80"
