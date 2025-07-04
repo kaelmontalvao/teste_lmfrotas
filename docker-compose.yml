@@ -1,5 +1,3 @@
-version: '3.8'
-
 # Serviço da Aplicação (Laravel + Apache)
 services:
   lm_frotas:
