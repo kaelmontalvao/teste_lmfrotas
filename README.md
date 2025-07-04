@@ -82,6 +82,10 @@ Com os contêineres rodando, precisamos executar alguns comandos do Laravel para
     ```bash
     docker compose exec lm_frotas php artisan optimize
     ```
+* **Corrigir permissões dos diretórios de cache (obrigatório para o Laravel funcionar corretamente):**
+    ```bash
+    docker compose exec lm_frotas bash -c "chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache && chmod -R 775 /var/www/html/storage /var/www/html/bootstrap/cache"
+    ```
 
 #### 5. Acesse o Projeto!
 Pronto! Abra seu navegador e acesse o seguinte endereço:
